@@ -13,8 +13,9 @@ public class Main {
             System.out.println("\nMenu: ");
             System.out.println("1. Add Contact");
             System.out.println("2. Edit Contact");
-            System.out.println("3. Display Contacts");
-            System.out.println("4. Exit");
+            System.out.println("3. Delete Contact");
+            System.out.println("4. Display Contacts");
+            System.out.println("5. Exit");
             System.out.println("Choose an option: ");
             int choice = sc.nextInt();
             sc.nextLine();
@@ -61,11 +62,23 @@ public class Main {
                     break;
 
                 case 3:
+                    //Delete a contact
+                    System.out.println("\nEnter the first name of the contact to be deleted: ");
+                    String nameToDelete=sc.nextLine();
+                    if(addressBook.deleteContact(nameToDelete)){
+                        System.out.println("Contact deleted successfully!");
+                    }
+                    else{
+                        System.out.println("Contact not found!");
+                    }
+                    break;
+
+                case 4:
                     //Display all contacts
                     addressBook.displayContacts();
                     break;
 
-                case 4:
+                case 5:
                     //Exit the program
                     continueProgram = false;
                     break;

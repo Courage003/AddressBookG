@@ -45,4 +45,15 @@ public class AddressBook {
 
         }
 
+        public boolean deleteContact(String firstName){
+        for(Contact contact: contacts){
+            if(contact.getFirstName().equalsIgnoreCase(firstName)){
+                contacts.remove(contact);
+                return true;
+            }
+
+        }
+        return false;
+        }
+
 }
