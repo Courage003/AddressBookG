@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-
+//First UC1 feature added
         System.out.println("Welcome to Address Book Program!");
         AddressBook addressBook= new AddressBook();
         Scanner sc = new Scanner(System.in);
