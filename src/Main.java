@@ -8,36 +8,73 @@ public class Main {
         AddressBook addressBook= new AddressBook();
         Scanner sc = new Scanner(System.in);
 
-        boolean continueAdding= true;
-        while(continueAdding){
-            System.out.println("Enter contact details: ");
-            System.out.println("Enter contact details: ");
-            System.out.print("First Name: ");
-            String firstName = sc.nextLine();
-            System.out.print("Last Name: ");
-            String lastName = sc.nextLine();
-            System.out.print("Address: ");
-            String address = sc.nextLine();
-            System.out.print("City: ");
-            String city = sc.nextLine();
-            System.out.print("State: ");
-            String state = sc.nextLine();
-            System.out.print("Zip: ");
-            String zip = sc.nextLine();
-            System.out.print("Phone Number: ");
-            String phoneNumber = sc.nextLine();
-            System.out.print("Email: ");
-            String email = sc.nextLine();
+        boolean continueProgram= true;
+        while(continueProgram) {
+            System.out.println("\nMenu: ");
+            System.out.println("1. Add Contact");
+            System.out.println("2. Edit Contact");
+            System.out.println("3. Display Contacts");
+            System.out.println("4. Exit");
+            System.out.println("Choose an option: ");
+            int choice = sc.nextInt();
+            sc.nextLine();
 
-            Contact contact = new Contact(firstName,lastName,address,city,state,zip,phoneNumber,email);
-            addressBook.addContact(contact);
+            switch (choice) {
+                case 1:
+                    //Add a new contact
+                    System.out.println("Enter contact details: ");
+                    System.out.println("Enter contact details: ");
+                    System.out.print("First Name: ");
+                    String firstName = sc.nextLine();
+                    System.out.print("Last Name: ");
+                    String lastName = sc.nextLine();
+                    System.out.print("Address: ");
+                    String address = sc.nextLine();
+                    System.out.print("City: ");
+                    String city = sc.nextLine();
+                    System.out.print("State: ");
+                    String state = sc.nextLine();
+                    System.out.print("Zip: ");
+                    String zip = sc.nextLine();
+                    System.out.print("Phone Number: ");
+                    String phoneNumber = sc.nextLine();
+                    System.out.print("Email: ");
+                    String email = sc.nextLine();
 
-            System.out.println("Contact added successfully!");
-            addressBook.displayContacts();
+                    Contact contact = new Contact(firstName, lastName, address, city, state, zip, phoneNumber, email);
+                    addressBook.addContact(contact);
 
-            System.out.print("Do you want to add another contact?: ");
-            String choice = sc.nextLine();
-            continueAdding=choice.equalsIgnoreCase("yes");
+                    System.out.println("Contact added successfully!");
+                    addressBook.displayContacts();
+                    break;
+
+                case 2:
+                    //Edit an existing contact
+                    System.out.print("\nEnter the first name of the contact to be edited: ");
+                    String nameToEdit = sc.nextLine();
+                    if (addressBook.editContact(nameToEdit, sc)) {
+                        System.out.println("Contact Updated successfully!");
+
+                    } else {
+                        System.out.println("Contact not found!");
+                    }
+                    break;
+
+                case 3:
+                    //Display all contacts
+                    addressBook.displayContacts();
+                    break;
+
+                case 4:
+                    //Exit the program
+                    continueProgram = false;
+                    break;
+
+                default:
+                    System.out.println("Invalid choice! Please try again. ");
+
+            }
+
         }
 
         System.out.println("Existing addressbook program");
